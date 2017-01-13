@@ -98,13 +98,8 @@ func (m *Mailbox) Status(items []string) (*imap.MailboxStatus, error) {
 	return status, err
 }
 
-func (m *Mailbox) Subscribe() error {
-	m.subscribed = true
-	return nil
-}
-
-func (m *Mailbox) Unsubscribe() error {
-	m.subscribed = false
+func (m *Mailbox) SetSubscribed(subscribed bool) error {
+	m.subscribed = subscribed
 	return nil
 }
 
