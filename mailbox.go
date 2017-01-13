@@ -27,6 +27,14 @@ type Mailbox struct {
 	subscribed bool
 }
 
+func NewMailbox(dirpath string, info *imap.MailboxInfo) *Mailbox {
+	return &Mailbox{
+		Dirpath: dirpath,
+		info: info,
+		subscribed: true,
+	}
+}
+
 func (m *Mailbox) Name() string {
 	return m.info.Name
 }

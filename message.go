@@ -1,6 +1,7 @@
 package disk
 
 import (
+	"encoding/binary"
 	"io"
 	"os"
 	"time"
@@ -11,11 +12,13 @@ import (
 )
 
 func parseUid(k []byte) uint32 {
-	return 0 // TODO
+	return binary.BigEndian.Uint32(k)
 }
 
 func formatUid(uid uint32) []byte {
-	return nil // TODO
+	k := make([]byte, 4)
+	binary.BigEndian.PutUint32(k, uid)
+	return k
 }
 
 type Message struct {
